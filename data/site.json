@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "club": {
+    "naam": "Risdam Seedan",
+    "opgericht": 2010
+  },
+  "competitie": {
+    "naam": "1e klasse",
+    "seizoen": "2026/2027",
+    "puntentelling": {
+      "winst": 3,
+      "gelijk": 1,
+      "verlies": 0
+    },
+    "teams": [
+      "Risdam Seedan",
+      "HVB",
+      "VN United",
+      "Team 11.20",
+      "FC Goodfellas",
+      "Fruitjuwelier De Hoef",
+      "Smile security",
+      "The Goal Diggers",
+      "Per seconde grijzer",
+      "Family First",
+      "Underdogs",
+      "Team 1337",
+      "Old stars",
+      "Griffel United"
+    ]
+  }
+}

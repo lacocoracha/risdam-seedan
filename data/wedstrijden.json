@@ -1,0 +1,332 @@
+{
+  "schemaVersion": 1,
+  "wedstrijden": [
+    {
+      "id": "2026-08-31-family-first-risdam-seedan",
+      "datum": "2026-08-31",
+      "thuis": "Family First",
+      "uit": "Risdam Seedan",
+      "thuisGoals": 3,
+      "uitGoals": 10,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-08-31-fruitjuwelier-de-hoef-underdogs",
+      "datum": "2026-08-31",
+      "thuis": "Fruitjuwelier De Hoef",
+      "uit": "Underdogs",
+      "thuisGoals": 1,
+      "uitGoals": 2,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-08-31-team-1337-fc-goodfellas",
+      "datum": "2026-08-31",
+      "thuis": "Team 1337",
+      "uit": "FC Goodfellas",
+      "thuisGoals": 6,
+      "uitGoals": 6,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-08-31-vn-united-per-seconde-grijzer",
+      "datum": "2026-08-31",
+      "thuis": "VN United",
+      "uit": "Per seconde grijzer",
+      "thuisGoals": 6,
+      "uitGoals": 2,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-08-31-smile-security-old-stars",
+      "datum": "2026-08-31",
+      "thuis": "Smile security",
+      "uit": "Old stars",
+      "thuisGoals": 10,
+      "uitGoals": 3,
+      "gespeeld": true
+    },
+
+    {
+      "id": "2026-09-07-griffel-united-underdogs",
+      "datum": "2026-09-07",
+      "thuis": "Griffel United",
+      "uit": "Underdogs",
+      "thuisGoals": 2,
+      "uitGoals": 8,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-07-fruitjuwelier-de-hoef-per-seconde-grijzer",
+      "datum": "2026-09-07",
+      "thuis": "Fruitjuwelier De Hoef",
+      "uit": "Per seconde grijzer",
+      "thuisGoals": 3,
+      "uitGoals": 2,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-07-family-first-the-goal-diggers",
+      "datum": "2026-09-07",
+      "thuis": "Family First",
+      "uit": "The Goal Diggers",
+      "thuisGoals": 1,
+      "uitGoals": 5,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-07-vn-united-fc-goodfellas",
+      "datum": "2026-09-07",
+      "thuis": "VN United",
+      "uit": "FC Goodfellas",
+      "thuisGoals": 14,
+      "uitGoals": 3,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-07-smile-security-risdam-seedan",
+      "datum": "2026-09-07",
+      "thuis": "Smile security",
+      "uit": "Risdam Seedan",
+      "thuisGoals": 9,
+      "uitGoals": 4,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-07-team-11-20-team-1337",
+      "datum": "2026-09-07",
+      "thuis": "Team 11.20",
+      "uit": "Team 1337",
+      "thuisGoals": 5,
+      "uitGoals": 4,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-07-hvb-old-stars",
+      "datum": "2026-09-07",
+      "thuis": "HVB",
+      "uit": "Old stars",
+      "thuisGoals": 4,
+      "uitGoals": 0,
+      "gespeeld": true
+    },
+
+    {
+      "id": "2026-09-14-old-stars-risdam-seedan",
+      "datum": "2026-09-14",
+      "thuis": "Old stars",
+      "uit": "Risdam Seedan",
+      "thuisGoals": 1,
+      "uitGoals": 9,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-14-family-first-team-1337",
+      "datum": "2026-09-14",
+      "thuis": "Family First",
+      "uit": "Team 1337",
+      "thuisGoals": 4,
+      "uitGoals": 3,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-14-hvb-underdogs",
+      "datum": "2026-09-14",
+      "thuis": "HVB",
+      "uit": "Underdogs",
+      "thuisGoals": 5,
+      "uitGoals": 2,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-14-smile-security-the-goal-diggers",
+      "datum": "2026-09-14",
+      "thuis": "Smile security",
+      "uit": "The Goal Diggers",
+      "thuisGoals": 4,
+      "uitGoals": 4,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-14-griffel-united-per-seconde-grijzer",
+      "datum": "2026-09-14",
+      "thuis": "Griffel United",
+      "uit": "Per seconde grijzer",
+      "thuisGoals": 0,
+      "uitGoals": 3,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-14-vn-united-team-11-20",
+      "datum": "2026-09-14",
+      "thuis": "VN United",
+      "uit": "Team 11.20",
+      "thuisGoals": 6,
+      "uitGoals": 9,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-14-fruitjuwelier-de-hoef-fc-goodfellas",
+      "datum": "2026-09-14",
+      "thuis": "Fruitjuwelier De Hoef",
+      "uit": "FC Goodfellas",
+      "thuisGoals": 5,
+      "uitGoals": 4,
+      "gespeeld": true
+    },
+
+    {
+      "id": "2026-09-21-griffel-united-fc-goodfellas",
+      "datum": "2026-09-21",
+      "thuis": "Griffel United",
+      "uit": "FC Goodfellas",
+      "thuisGoals": 3,
+      "uitGoals": 9,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-21-fruitjuwelier-de-hoef-team-11-20",
+      "datum": "2026-09-21",
+      "thuis": "Fruitjuwelier De Hoef",
+      "uit": "Team 11.20",
+      "thuisGoals": 6,
+      "uitGoals": 6,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-21-underdogs-per-seconde-grijzer",
+      "datum": "2026-09-21",
+      "thuis": "Underdogs",
+      "uit": "Per seconde grijzer",
+      "thuisGoals": 0,
+      "uitGoals": 1,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-21-family-first-vn-united",
+      "datum": "2026-09-21",
+      "thuis": "Family First",
+      "uit": "VN United",
+      "thuisGoals": 3,
+      "uitGoals": 5,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-21-old-stars-the-goal-diggers",
+      "datum": "2026-09-21",
+      "thuis": "Old stars",
+      "uit": "The Goal Diggers",
+      "thuisGoals": 2,
+      "uitGoals": 5,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-21-smile-security-team-1337",
+      "datum": "2026-09-21",
+      "tijd": "21:00",
+      "thuis": "Smile security",
+      "uit": "Team 1337",
+      "thuisGoals": null,
+      "uitGoals": null,
+      "gespeeld": false
+    },
+    {
+      "id": "2026-09-21-hvb-risdam-seedan",
+      "datum": "2026-09-21",
+      "thuis": "HVB",
+      "uit": "Risdam Seedan",
+      "thuisGoals": 3,
+      "uitGoals": 2,
+      "gespeeld": true
+    },
+
+    {
+      "id": "2026-09-28-hvb-per-seconde-grijzer",
+      "datum": "2026-09-28",
+      "thuis": "HVB",
+      "uit": "Per seconde grijzer",
+      "thuisGoals": 6,
+      "uitGoals": 3,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-28-fruitjuwelier-de-hoef-family-first",
+      "datum": "2026-09-28",
+      "thuis": "Fruitjuwelier De Hoef",
+      "uit": "Family First",
+      "thuisGoals": 0,
+      "uitGoals": 9,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-28-risdam-seedan-the-goal-diggers",
+      "datum": "2026-09-28",
+      "thuis": "Risdam Seedan",
+      "uit": "The Goal Diggers",
+      "thuisGoals": 7,
+      "uitGoals": 5,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-28-old-stars-team-1337",
+      "datum": "2026-09-28",
+      "thuis": "Old stars",
+      "uit": "Team 1337",
+      "thuisGoals": 5,
+      "uitGoals": 5,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-28-smile-security-vn-united",
+      "datum": "2026-09-28",
+      "thuis": "Smile security",
+      "uit": "VN United",
+      "thuisGoals": 5,
+      "uitGoals": 7,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-28-griffel-united-team-11-20",
+      "datum": "2026-09-28",
+      "thuis": "Griffel United",
+      "uit": "Team 11.20",
+      "thuisGoals": 5,
+      "uitGoals": 9,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-28-underdogs-fc-goodfellas",
+      "datum": "2026-09-28",
+      "thuis": "Underdogs",
+      "uit": "FC Goodfellas",
+      "thuisGoals": 3,
+      "uitGoals": 4,
+      "gespeeld": true
+    },
+
+    {
+      "id": "2026-10-05-risdam-seedan-team-1337",
+      "datum": "2026-10-05",
+      "tijd": "20:30",
+      "locatie": "De Opgang",
+      "locatieLink": "https://www.google.com/maps/search/?api=1&query=Akkerwinde+43%2C+1689+NT+Zwaag",
+      "thuis": "Risdam Seedan",
+      "uit": "Team 1337",
+      "thuisGoals": null,
+      "uitGoals": null,
+      "gespeeld": false
+    },
+    {
+      "id": "2026-10-19-risdam-seedan-vn-united",
+      "datum": "2026-10-19",
+      "tijd": "20:30",
+      "locatie": "De Opgang",
+      "locatieLink": "https://www.google.com/maps/search/?api=1&query=Akkerwinde+43%2C+1689+NT+Zwaag",
+      "thuis": "Risdam Seedan",
+      "uit": "VN United",
+      "thuisGoals": null,
+      "uitGoals": null,
+      "gespeeld": false
+    }
+  ]
+}

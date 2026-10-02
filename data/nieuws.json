@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "nieuws": [
+    {
+      "id": "2026-09-30-nieuwe-website-risdam-seedan-online",
+      "datum": "2026-09-30",
+      "categorie": "Clubnieuws",
+      "titel": "Nieuwe website Risdam Seedan online",
+      "tekst": "De nieuwe website van Risdam Seedan is in ontwikkeling. Uitslagen, programma, stand, spelers en statistieken zijn inmiddels allemaal op één plek te vinden.",
+      "afbeelding": null,
+      "afbeeldingAlt": null
+    },
+    {
+      "id": "2026-09-28-risdam-seedan-wint-van-the-goal-diggers",
+      "datum": "2026-09-28",
+      "categorie": "Wedstrijdverslag",
+      "titel": "Risdam Seedan wint van The Goal Diggers",
+      "tekst": "Risdam Seedan heeft de thuiswedstrijd tegen The Goal Diggers met 7-5 gewonnen en pakt daarmee drie punten.",
+      "afbeelding": null,
+      "afbeeldingAlt": null
+    }
+  ]
+}

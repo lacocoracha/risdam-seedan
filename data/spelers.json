@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "spelers": [
+    {
+      "id": "kiri",
+      "naam": "KiRi",
+      "doelpunten": null,
+      "assists": null,
+      "foto": null
+    },
+    {
+      "id": "c-b",
+      "naam": "C-B",
+      "doelpunten": null,
+      "assists": null,
+      "foto": null
+    },
+    {
+      "id": "dan-san",
+      "naam": "Dan San",
+      "doelpunten": null,
+      "assists": null,
+      "foto": null
+    },
+    {
+      "id": "allie",
+      "naam": "Allie",
+      "doelpunten": null,
+      "assists": null,
+      "foto": null
+    },
+    {
+      "id": "chocoboy",
+      "naam": "Chocoboy",
+      "doelpunten": null,
+      "assists": null,
+      "foto": null
+    },
+    {
+      "id": "lukoki",
+      "naam": "Lukoki",
+      "doelpunten": null,
+      "assists": null,
+      "foto": null
+    },
+    {
+      "id": "nanvey",
+      "naam": "Nanvey",
+      "doelpunten": null,
+      "assists": null,
+      "foto": null
+    }
+  ]
+}

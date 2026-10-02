@@ -1,0 +1,17 @@
+{
+  "schemaVersion": 1,
+  "sponsors": [
+    {
+      "id": "vk-koeriers",
+      "naam": "VK Koeriers",
+      "logo": "sponsoren/vk-koeriers.png",
+      "website": "https://vkkoeriers.nl/"
+    },
+    {
+      "id": "hoornse-hoveniers",
+      "naam": "Hoornse Hoveniers",
+      "logo": "sponsoren/hoornse-hoveniers.png",
+      "website": "https://hoornsehoveniers.nl/"
+    }
+  ]
+}
