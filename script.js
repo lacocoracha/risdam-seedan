@@ -4,6 +4,9 @@
 ========================================== */
 
 
+const competitieNaam = "1e klasse";
+
+
 const teams = [
     "Risdam Seedan",
     "HVB",
@@ -20,7 +23,6 @@ const teams = [
     "Old stars",
     "Griffel United"
 ];
-
 
 
 /* ==========================================
@@ -81,7 +83,6 @@ const spelers = [
 ];
 
 
-
 /* ==========================================
    SPONSORS
 ========================================== */
@@ -103,40 +104,85 @@ const sponsors = [
 ];
 
 
-
 /* ==========================================
    NIEUWS
+
+   NIEUWE BERICHTEN HIER TOEVOEGEN
 ========================================== */
+
+/*
+   ZONDER FOTO:
+
+   {
+       datum: "01-10-2026",
+       categorie: "Clubnieuws",
+       titel: "Titel van het nieuwsbericht",
+       tekst: "Tekst van het nieuwsbericht.",
+       afbeelding: null,
+       afbeeldingAlt: null
+   }
+
+
+   MET FOTO:
+
+   Zet de foto bijvoorbeeld in:
+
+   risdam-seedan
+   └── nieuws
+       └── teamfoto.jpg
+
+   En gebruik:
+
+   {
+       datum: "01-10-2026",
+       categorie: "Teamnieuws",
+       titel: "Titel van het nieuwsbericht",
+       tekst: "Tekst van het nieuwsbericht.",
+       afbeelding: "nieuws/teamfoto.jpg",
+       afbeeldingAlt: "Risdam Seedan teamfoto"
+   }
+*/
+
 
 const nieuws = [
 
     {
         datum: "30-09-2026",
+        categorie: "Clubnieuws",
 
         titel:
             "Nieuwe website Risdam Seedan online",
 
         tekst:
-            "De nieuwe website van Risdam Seedan is in ontwikkeling. Uitslagen, programma, stand, spelers en statistieken zijn inmiddels allemaal op één plek te vinden."
+            "De nieuwe website van Risdam Seedan is in ontwikkeling. Uitslagen, programma, stand, spelers en statistieken zijn inmiddels allemaal op één plek te vinden.",
+
+        afbeelding: null,
+        afbeeldingAlt: null
     },
 
     {
         datum: "28-09-2026",
+        categorie: "Wedstrijdverslag",
 
         titel:
             "Risdam Seedan wint van The Goal Diggers",
 
         tekst:
-            "Risdam Seedan heeft de thuiswedstrijd tegen The Goal Diggers met 7-5 gewonnen en pakt daarmee drie punten."
+            "Risdam Seedan heeft de thuiswedstrijd tegen The Goal Diggers met 7-5 gewonnen en pakt daarmee drie punten.",
+
+        afbeelding: null,
+        afbeeldingAlt: null
     }
 
 ];
 
 
-
 /* ==========================================
    WEDSTRIJDEN
+
+   HIER WEDSTRIJDEN BIJWERKEN
 ========================================== */
+
 
 const wedstrijden = [
 
@@ -453,16 +499,24 @@ const wedstrijden = [
     },
 
 
-    /* KOMENDE WEDSTRIJDEN */
+    /* ======================================
+       KOMENDE WEDSTRIJDEN RISDAM SEEDAN
+    ====================================== */
 
     {
         datum: "05-10-2026",
         tijd: "20:30",
         locatie: "De Opgang",
+
+        locatieLink:
+            "https://www.google.com/maps/search/?api=1&query=Akkerwinde+43%2C+1689+NT+Zwaag",
+
         thuis: "Risdam Seedan",
         uit: "Team 1337",
+
         thuisGoals: null,
         uitGoals: null,
+
         gespeeld: false
     },
 
@@ -470,19 +524,24 @@ const wedstrijden = [
         datum: "19-10-2026",
         tijd: "20:30",
         locatie: "De Opgang",
+
+        locatieLink:
+            "https://www.google.com/maps/search/?api=1&query=Akkerwinde+43%2C+1689+NT+Zwaag",
+
         thuis: "Risdam Seedan",
         uit: "VN United",
+
         thuisGoals: null,
         uitGoals: null,
+
         gespeeld: false
     }
 
 ];
 
 
-
 /* ==========================================
-   DATUMFUNCTIES
+   HULPFUNCTIES
 ========================================== */
 
 function datumNaarDate(datum) {
@@ -495,6 +554,7 @@ function datumNaarDate(datum) {
         maand - 1,
         dag
     );
+
 }
 
 
@@ -509,12 +569,101 @@ function mooieDatum(datum) {
                 year: "numeric"
             }
         );
+
 }
 
 
+function matchdayDatum(datum) {
+
+    return datumNaarDate(datum)
+        .toLocaleDateString(
+            "nl-NL",
+            {
+                weekday: "long",
+                day: "numeric",
+                month: "long"
+            }
+        )
+        .toUpperCase();
+
+}
+
+
+function isRisdamWedstrijd(wedstrijd) {
+
+    return (
+        wedstrijd.thuis === "Risdam Seedan" ||
+        wedstrijd.uit === "Risdam Seedan"
+    );
+
+}
+
+
+function isVandaagOfLater(wedstrijd) {
+
+    const wedstrijdDatum =
+        datumNaarDate(wedstrijd.datum);
+
+    wedstrijdDatum.setHours(
+        23,
+        59,
+        59,
+        999
+    );
+
+    const nu = new Date();
+
+    return wedstrijdDatum >= nu;
+
+}
+
+
+function risdamClass(team) {
+
+    return team === "Risdam Seedan"
+        ? "risdam-naam"
+        : "";
+
+}
+
 
 /* ==========================================
-   VOLGENDE WEDSTRIJD
+   COMPETITIENAAM
+========================================== */
+
+function toonCompetitieNaam() {
+
+    const programmaCompetitie =
+        document.getElementById(
+            "programma-competitie"
+        );
+
+    const standCompetitie =
+        document.getElementById(
+            "stand-competitie"
+        );
+
+
+    if (programmaCompetitie) {
+
+        programmaCompetitie.textContent =
+            competitieNaam;
+
+    }
+
+
+    if (standCompetitie) {
+
+        standCompetitie.textContent =
+            competitieNaam;
+
+    }
+
+}
+
+
+/* ==========================================
+   MATCHDAY
 ========================================== */
 
 function toonVolgendeWedstrijd() {
@@ -524,6 +673,7 @@ function toonVolgendeWedstrijd() {
             "volgende-wedstrijd"
         );
 
+
     if (!container) {
         return;
     }
@@ -531,18 +681,14 @@ function toonVolgendeWedstrijd() {
 
     const komende =
         wedstrijden
-            .filter(wedstrijd => {
 
-                const risdam =
-                    wedstrijd.thuis === "Risdam Seedan" ||
-                    wedstrijd.uit === "Risdam Seedan";
+            .filter(
+                wedstrijd =>
+                    isRisdamWedstrijd(wedstrijd) &&
+                    wedstrijd.gespeeld === false &&
+                    isVandaagOfLater(wedstrijd)
+            )
 
-                return (
-                    risdam &&
-                    wedstrijd.gespeeld === false
-                );
-
-            })
             .sort(
                 (a, b) =>
                     datumNaarDate(a.datum) -
@@ -552,10 +698,33 @@ function toonVolgendeWedstrijd() {
 
     if (komende.length === 0) {
 
-        container.innerHTML =
-            "<p>Geen komende wedstrijd gepland.</p>";
+        container.innerHTML = `
+
+            <div class="geen-wedstrijd">
+
+                <h3>
+                    Nieuw programma volgt
+                </h3>
+
+                <p>
+                    Er staat momenteel nog geen nieuwe
+                    wedstrijd van Risdam Seedan gepland.
+                </p>
+
+                <a
+                    href="programma.html"
+                    class="matchday-knop"
+                >
+                    Bekijk programma
+                    <span>→</span>
+                </a>
+
+            </div>
+
+        `;
 
         return;
+
     }
 
 
@@ -563,51 +732,189 @@ function toonVolgendeWedstrijd() {
         komende[0];
 
 
+    const thuisRisdam =
+        wedstrijd.thuis ===
+        "Risdam Seedan";
+
+
+    const uitRisdam =
+        wedstrijd.uit ===
+        "Risdam Seedan";
+
+
     container.innerHTML = `
 
-        <div class="volgende-datum">
+        <div class="matchday-inhoud">
 
-            ${mooieDatum(wedstrijd.datum)}
-
-            ${
-                wedstrijd.tijd
-                    ? " • " + wedstrijd.tijd
-                    : ""
-            }
-
-        </div>
+            <img
+                src="logo.png"
+                alt=""
+                class="matchday-achtergrond-logo"
+                aria-hidden="true"
+            >
 
 
-        <div class="volgende-teams">
+            <div class="matchday-meta">
 
-            <span>
-                ${wedstrijd.thuis}
-            </span>
+                <span class="matchday-datum">
 
-            <span class="volgende-vs">
-                VS
-            </span>
+                    ${matchdayDatum(
+                        wedstrijd.datum
+                    )}
 
-            <span>
-                ${wedstrijd.uit}
-            </span>
-
-        </div>
+                </span>
 
 
-        ${
-            wedstrijd.locatie
-                ? `
-                    <div class="volgende-locatie">
-                        ${wedstrijd.locatie}
+                <span class="matchday-tijd">
+
+                    ${
+                        wedstrijd.tijd
+                            ? wedstrijd.tijd
+                            : "Tijd volgt"
+                    }
+
+                </span>
+
+            </div>
+
+
+            <div class="matchday-teams">
+
+
+                <div class="matchday-team">
+
+                    <span class="matchday-rol">
+                        Thuis
+                    </span>
+
+                    <strong
+                        class="${
+                            thuisRisdam
+                                ? "risdam-team"
+                                : ""
+                        }"
+                    >
+
+                        ${wedstrijd.thuis}
+
+                    </strong>
+
+                </div>
+
+
+                <div class="matchday-vs">
+
+                    <span>
+                        VS
+                    </span>
+
+                </div>
+
+
+                <div class="matchday-team">
+
+                    <span class="matchday-rol">
+                        Uit
+                    </span>
+
+                    <strong
+                        class="${
+                            uitRisdam
+                                ? "risdam-team"
+                                : ""
+                        }"
+                    >
+
+                        ${wedstrijd.uit}
+
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="matchday-footer">
+
+                <div class="matchday-footer-info">
+
+
+                    <div class="matchday-info-item">
+
+                        <span>
+                            COMPETITIE
+                        </span>
+
+                        <strong>
+                            ${competitieNaam}
+                        </strong>
+
                     </div>
-                `
-                : ""
-        }
+
+
+                    <div class="matchday-info-item">
+
+                        <span>
+                            LOCATIE
+                        </span>
+
+                        ${
+                            wedstrijd.locatieLink
+
+                                ? `
+
+                                    <a
+                                        href="${wedstrijd.locatieLink}"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="matchday-locatie-link"
+                                        title="Open ${wedstrijd.locatie} in Google Maps"
+                                    >
+                                        ${wedstrijd.locatie} ↗
+                                    </a>
+
+                                `
+
+                                : `
+
+                                    <strong>
+
+                                        ${
+                                            wedstrijd.locatie
+                                                ? wedstrijd.locatie
+                                                : "Locatie volgt"
+                                        }
+
+                                    </strong>
+
+                                `
+                        }
+
+                    </div>
+
+                </div>
+
+
+                <a
+                    href="programma.html"
+                    class="matchday-knop"
+                >
+
+                    Bekijk programma
+
+                    <span>
+                        →
+                    </span>
+
+                </a>
+
+            </div>
+
+        </div>
 
     `;
-}
 
+}
 
 
 /* ==========================================
@@ -617,44 +924,124 @@ function toonVolgendeWedstrijd() {
 function maakNieuwsHtml(berichten) {
 
     return berichten
+
         .map(
-            bericht => `
+            bericht => {
 
-                <article class="nieuws-kaart">
 
-                    <div class="nieuws-header">
+                const afbeeldingHtml =
+                    bericht.afbeelding
 
-                        <div class="nieuws-datum">
-                            ${mooieDatum(bericht.datum)}
+                        ? `
+
+                            <div class="nieuws-afbeelding">
+
+                                <img
+                                    src="${bericht.afbeelding}"
+                                    alt="${
+                                        bericht.afbeeldingAlt
+                                            ? bericht.afbeeldingAlt
+                                            : bericht.titel
+                                    }"
+                                    loading="lazy"
+                                >
+
+                            </div>
+
+                        `
+
+                        : "";
+
+
+                return `
+
+                    <article class="nieuws-kaart">
+
+
+                        <div class="nieuws-header">
+
+                            <div class="nieuws-logo-vak">
+
+                                <img
+                                    src="logo.png"
+                                    alt=""
+                                    class="nieuws-logo"
+                                    aria-hidden="true"
+                                >
+
+                            </div>
+
+
+                            <div class="nieuws-header-inhoud">
+
+                                <div class="nieuws-meta">
+
+                                    <span class="nieuws-categorie">
+
+                                        ${
+                                            bericht.categorie
+                                                ? bericht.categorie
+                                                : "Nieuws"
+                                        }
+
+                                    </span>
+
+
+                                    <span class="nieuws-datum">
+
+                                        ${mooieDatum(
+                                            bericht.datum
+                                        )}
+
+                                    </span>
+
+                                </div>
+
+
+                                <h3 class="nieuws-titel">
+
+                                    ${bericht.titel}
+
+                                </h3>
+
+                            </div>
+
                         </div>
 
-                        <h3 class="nieuws-titel">
-                            ${bericht.titel}
-                        </h3>
 
-                    </div>
+                        ${afbeeldingHtml}
 
 
-                    <div class="nieuws-inhoud">
+                        <div class="nieuws-inhoud">
 
-                        <p>
-                            ${bericht.tekst}
-                        </p>
+                            <p>
+                                ${bericht.tekst}
+                            </p>
 
-                    </div>
+                        </div>
 
-                </article>
 
-            `
+                    </article>
+
+                `;
+
+            }
         )
+
         .join("");
+
 }
 
+
+/* ==========================================
+   NIEUWS TONEN
+========================================== */
 
 function toonNieuws() {
 
     const gesorteerd =
         [...nieuws]
+
             .sort(
                 (a, b) =>
                     datumNaarDate(b.datum) -
@@ -662,37 +1049,90 @@ function toonNieuws() {
             );
 
 
-    /* NIEUWSPAGINA */
-
     const nieuwsContainer =
         document.getElementById(
             "nieuws-lijst"
         );
 
+
     if (nieuwsContainer) {
 
         nieuwsContainer.innerHTML =
-            maakNieuwsHtml(gesorteerd);
+            maakNieuwsHtml(
+                gesorteerd
+            );
+
     }
 
-
-    /* HOME */
 
     const homeContainer =
         document.getElementById(
             "home-nieuws"
         );
 
+
     if (homeContainer) {
 
         const laatsteTwee =
             gesorteerd.slice(0, 2);
 
+
         homeContainer.innerHTML =
-            maakNieuwsHtml(laatsteTwee);
+            maakNieuwsHtml(
+                laatsteTwee
+            );
+
     }
+
 }
 
+
+/* ==========================================
+   HOME SPONSORS
+========================================== */
+
+function toonHomeSponsors() {
+
+    const container =
+        document.getElementById(
+            "home-sponsors"
+        );
+
+
+    if (!container) {
+        return;
+    }
+
+
+    container.innerHTML =
+        sponsors
+
+            .map(
+                sponsor => `
+
+                    <a
+                        href="${sponsor.website}"
+                        target="_blank"
+                        rel="sponsored noopener noreferrer"
+                        class="home-sponsor-link"
+                        aria-label="Bezoek de website van ${sponsor.naam}"
+                    >
+
+                        <img
+                            src="${sponsor.logo}"
+                            alt="${sponsor.naam}"
+                            class="home-sponsor-logo"
+                            loading="lazy"
+                        >
+
+                    </a>
+
+                `
+            )
+
+            .join("");
+
+}
 
 
 /* ==========================================
@@ -706,6 +1146,7 @@ function toonUitslagen() {
             "uitslagen-lijst"
         );
 
+
     if (!container) {
         return;
     }
@@ -713,18 +1154,13 @@ function toonUitslagen() {
 
     const gespeeld =
         wedstrijden
-            .filter(wedstrijd => {
 
-                const risdam =
-                    wedstrijd.thuis === "Risdam Seedan" ||
-                    wedstrijd.uit === "Risdam Seedan";
-
-                return (
-                    risdam &&
+            .filter(
+                wedstrijd =>
+                    isRisdamWedstrijd(wedstrijd) &&
                     wedstrijd.gespeeld
-                );
+            )
 
-            })
             .sort(
                 (a, b) =>
                     datumNaarDate(b.datum) -
@@ -734,30 +1170,51 @@ function toonUitslagen() {
 
     container.innerHTML =
         gespeeld
+
             .map(
                 wedstrijd => `
 
                     <div class="wedstrijd">
 
                         <div class="wedstrijd-datum">
-                            ${mooieDatum(wedstrijd.datum)}
+
+                            ${mooieDatum(
+                                wedstrijd.datum
+                            )}
+
                         </div>
 
 
                         <div class="wedstrijd-teams">
 
-                            <span>
+                            <span
+                                class="${risdamClass(
+                                    wedstrijd.thuis
+                                )}"
+                            >
+
                                 ${wedstrijd.thuis}
+
                             </span>
 
+
                             <strong>
+
                                 ${wedstrijd.thuisGoals}
                                 -
                                 ${wedstrijd.uitGoals}
+
                             </strong>
 
-                            <span>
+
+                            <span
+                                class="${risdamClass(
+                                    wedstrijd.uit
+                                )}"
+                            >
+
                                 ${wedstrijd.uit}
+
                             </span>
 
                         </div>
@@ -766,9 +1223,10 @@ function toonUitslagen() {
 
                 `
             )
-            .join("");
-}
 
+            .join("");
+
+}
 
 
 /* ==========================================
@@ -782,6 +1240,7 @@ function toonProgramma() {
             "programma-lijst"
         );
 
+
     if (!container) {
         return;
     }
@@ -789,18 +1248,14 @@ function toonProgramma() {
 
     const komend =
         wedstrijden
-            .filter(wedstrijd => {
 
-                const risdam =
-                    wedstrijd.thuis === "Risdam Seedan" ||
-                    wedstrijd.uit === "Risdam Seedan";
+            .filter(
+                wedstrijd =>
+                    isRisdamWedstrijd(wedstrijd) &&
+                    wedstrijd.gespeeld === false &&
+                    isVandaagOfLater(wedstrijd)
+            )
 
-                return (
-                    risdam &&
-                    wedstrijd.gespeeld === false
-                );
-
-            })
             .sort(
                 (a, b) =>
                     datumNaarDate(a.datum) -
@@ -814,11 +1269,13 @@ function toonProgramma() {
             "<p>Er staan momenteel geen wedstrijden gepland.</p>";
 
         return;
+
     }
 
 
     container.innerHTML =
         komend
+
             .map(
                 wedstrijd => `
 
@@ -826,11 +1283,14 @@ function toonProgramma() {
 
                         <div class="wedstrijd-datum">
 
-                            ${mooieDatum(wedstrijd.datum)}
+                            ${mooieDatum(
+                                wedstrijd.datum
+                            )}
 
                             ${
                                 wedstrijd.tijd
-                                    ? " • " + wedstrijd.tijd
+                                    ? " • " +
+                                      wedstrijd.tijd
                                     : ""
                             }
 
@@ -839,16 +1299,30 @@ function toonProgramma() {
 
                         <div class="wedstrijd-teams">
 
-                            <span>
+                            <span
+                                class="${risdamClass(
+                                    wedstrijd.thuis
+                                )}"
+                            >
+
                                 ${wedstrijd.thuis}
+
                             </span>
+
 
                             <strong>
                                 VS
                             </strong>
 
-                            <span>
+
+                            <span
+                                class="${risdamClass(
+                                    wedstrijd.uit
+                                )}"
+                            >
+
                                 ${wedstrijd.uit}
+
                             </span>
 
                         </div>
@@ -856,11 +1330,17 @@ function toonProgramma() {
 
                         ${
                             wedstrijd.locatie
+
                                 ? `
+
                                     <div class="wedstrijd-locatie">
+
                                         ${wedstrijd.locatie}
+
                                     </div>
+
                                 `
+
                                 : ""
                         }
 
@@ -868,9 +1348,10 @@ function toonProgramma() {
 
                 `
             )
-            .join("");
-}
 
+            .join("");
+
+}
 
 
 /* ==========================================
@@ -884,6 +1365,7 @@ function toonAlleUitslagen() {
             "alle-uitslagen-lijst"
         );
 
+
     if (!container) {
         return;
     }
@@ -891,10 +1373,12 @@ function toonAlleUitslagen() {
 
     const gespeeld =
         wedstrijden
+
             .filter(
                 wedstrijd =>
                     wedstrijd.gespeeld
             )
+
             .sort(
                 (a, b) =>
                     datumNaarDate(b.datum) -
@@ -905,43 +1389,64 @@ function toonAlleUitslagen() {
     const perDatum = {};
 
 
-    gespeeld.forEach(wedstrijd => {
+    gespeeld.forEach(
+        wedstrijd => {
 
-        if (!perDatum[wedstrijd.datum]) {
+            if (
+                !perDatum[
+                    wedstrijd.datum
+                ]
+            ) {
 
-            perDatum[wedstrijd.datum] = [];
+                perDatum[
+                    wedstrijd.datum
+                ] = [];
+
+            }
+
+
+            perDatum[
+                wedstrijd.datum
+            ].push(
+                wedstrijd
+            );
+
         }
-
-        perDatum[wedstrijd.datum]
-            .push(wedstrijd);
-
-    });
+    );
 
 
     let html = "";
 
 
-    Object.entries(perDatum)
-        .forEach(
-            ([datum, wedstrijdenVanDag]) => {
+    Object.entries(
+        perDatum
+    ).forEach(
 
-                html += `
-
-                    <div class="speelronde">
-
-                        <div class="speelronde-titel">
-                            ${mooieDatum(datum)}
-                        </div>
-
-                `;
+        ([datum, wedstrijdenVanDag]) => {
 
 
-                wedstrijdenVanDag
-                    .forEach(wedstrijd => {
+            html += `
+
+                <div class="speelronde">
+
+                    <div class="speelronde-titel">
+
+                        ${mooieDatum(datum)}
+
+                    </div>
+
+            `;
+
+
+            wedstrijdenVanDag
+                .forEach(
+                    wedstrijd => {
+
 
                         const risdam =
-                            wedstrijd.thuis === "Risdam Seedan" ||
-                            wedstrijd.uit === "Risdam Seedan";
+                            isRisdamWedstrijd(
+                                wedstrijd
+                            );
 
 
                         html += `
@@ -956,39 +1461,49 @@ function toonAlleUitslagen() {
                             ">
 
                                 <span class="thuisteam">
+
                                     ${wedstrijd.thuis}
+
                                 </span>
+
 
                                 <span class="competitie-score">
+
                                     ${wedstrijd.thuisGoals}-${wedstrijd.uitGoals}
+
                                 </span>
 
+
                                 <span class="uitteam">
+
                                     ${wedstrijd.uit}
+
                                 </span>
 
                             </div>
 
                         `;
 
-                    });
+                    }
+                );
 
 
-                html += `
-                    </div>
-                `;
+            html += `
+                </div>
+            `;
 
-            }
-        );
+        }
+
+    );
 
 
     container.innerHTML = html;
+
 }
 
 
-
 /* ==========================================
-   SEIZOEN RISDAM
+   SEIZOENSTATISTIEKEN RISDAM
 ========================================== */
 
 function toonSeizoenStatistieken() {
@@ -998,180 +1513,134 @@ function toonSeizoenStatistieken() {
             "statistieken"
         );
 
+
     if (!container) {
         return;
     }
 
 
     let gespeeld = 0;
-
     let gewonnen = 0;
-
     let gelijk = 0;
-
     let verloren = 0;
-
     let goalsVoor = 0;
-
     let goalsTegen = 0;
 
 
-    wedstrijden.forEach(wedstrijd => {
+    wedstrijden.forEach(
+        wedstrijd => {
 
-        if (!wedstrijd.gespeeld) {
-            return;
+
+            if (
+                !wedstrijd.gespeeld ||
+                !isRisdamWedstrijd(
+                    wedstrijd
+                )
+            ) {
+
+                return;
+
+            }
+
+
+            gespeeld++;
+
+
+            let risdamGoals;
+            let tegenGoals;
+
+
+            if (
+                wedstrijd.thuis ===
+                "Risdam Seedan"
+            ) {
+
+                risdamGoals =
+                    wedstrijd.thuisGoals;
+
+                tegenGoals =
+                    wedstrijd.uitGoals;
+
+            } else {
+
+                risdamGoals =
+                    wedstrijd.uitGoals;
+
+                tegenGoals =
+                    wedstrijd.thuisGoals;
+
+            }
+
+
+            goalsVoor += risdamGoals;
+            goalsTegen += tegenGoals;
+
+
+            if (
+                risdamGoals >
+                tegenGoals
+            ) {
+
+                gewonnen++;
+
+            } else if (
+                risdamGoals ===
+                tegenGoals
+            ) {
+
+                gelijk++;
+
+            } else {
+
+                verloren++;
+
+            }
+
         }
-
-
-        const risdam =
-            wedstrijd.thuis === "Risdam Seedan" ||
-            wedstrijd.uit === "Risdam Seedan";
-
-
-        if (!risdam) {
-            return;
-        }
-
-
-        gespeeld++;
-
-
-        let risdamGoals;
-
-        let tegenGoals;
-
-
-        if (
-            wedstrijd.thuis ===
-            "Risdam Seedan"
-        ) {
-
-            risdamGoals =
-                wedstrijd.thuisGoals;
-
-            tegenGoals =
-                wedstrijd.uitGoals;
-
-        } else {
-
-            risdamGoals =
-                wedstrijd.uitGoals;
-
-            tegenGoals =
-                wedstrijd.thuisGoals;
-        }
-
-
-        goalsVoor += risdamGoals;
-
-        goalsTegen += tegenGoals;
-
-
-        if (risdamGoals > tegenGoals) {
-
-            gewonnen++;
-
-        } else if (
-            risdamGoals === tegenGoals
-        ) {
-
-            gelijk++;
-
-        } else {
-
-            verloren++;
-        }
-
-    });
+    );
 
 
     const punten =
-        gewonnen * 3 + gelijk;
+        gewonnen * 3 +
+        gelijk;
 
 
     const doelsaldo =
-        goalsVoor - goalsTegen;
+        goalsVoor -
+        goalsTegen;
 
 
     container.innerHTML = `
 
         <div class="stat-box">
-
-            <strong>
-                ${gespeeld}
-            </strong>
-
-            <span>
-                Gespeeld
-            </span>
-
+            <strong>${gespeeld}</strong>
+            <span>Gespeeld</span>
         </div>
-
 
         <div class="stat-box">
-
-            <strong>
-                ${gewonnen}
-            </strong>
-
-            <span>
-                Gewonnen
-            </span>
-
+            <strong>${gewonnen}</strong>
+            <span>Gewonnen</span>
         </div>
-
 
         <div class="stat-box">
-
-            <strong>
-                ${gelijk}
-            </strong>
-
-            <span>
-                Gelijk
-            </span>
-
+            <strong>${gelijk}</strong>
+            <span>Gelijk</span>
         </div>
-
 
         <div class="stat-box">
-
-            <strong>
-                ${verloren}
-            </strong>
-
-            <span>
-                Verloren
-            </span>
-
+            <strong>${verloren}</strong>
+            <span>Verloren</span>
         </div>
-
 
         <div class="stat-box">
-
-            <strong>
-                ${punten}
-            </strong>
-
-            <span>
-                Punten
-            </span>
-
+            <strong>${punten}</strong>
+            <span>Punten</span>
         </div>
-
 
         <div class="stat-box">
-
-            <strong>
-                ${goalsVoor}-${goalsTegen}
-            </strong>
-
-            <span>
-                Goals
-            </span>
-
+            <strong>${goalsVoor}-${goalsTegen}</strong>
+            <span>Goals</span>
         </div>
-
 
         <div class="stat-box">
 
@@ -1194,8 +1663,8 @@ function toonSeizoenStatistieken() {
         </div>
 
     `;
-}
 
+}
 
 
 /* ==========================================
@@ -1209,6 +1678,7 @@ function berekenStand() {
             "competitie-stand"
         );
 
+
     if (!container) {
         return;
     }
@@ -1217,118 +1687,133 @@ function berekenStand() {
     const stand = {};
 
 
-    teams.forEach(team => {
+    teams.forEach(
+        team => {
 
-        stand[team] = {
+            stand[team] = {
 
-            team: team,
+                team: team,
+                gespeeld: 0,
+                gewonnen: 0,
+                gelijk: 0,
+                verloren: 0,
+                voor: 0,
+                tegen: 0,
+                doelsaldo: 0,
+                punten: 0
 
-            gespeeld: 0,
+            };
 
-            gewonnen: 0,
-
-            gelijk: 0,
-
-            verloren: 0,
-
-            voor: 0,
-
-            tegen: 0,
-
-            doelsaldo: 0,
-
-            punten: 0
-
-        };
-
-    });
-
-
-    wedstrijden.forEach(wedstrijd => {
-
-        if (!wedstrijd.gespeeld) {
-            return;
         }
+    );
 
 
-        const thuis =
-            stand[wedstrijd.thuis];
-
-        const uit =
-            stand[wedstrijd.uit];
+    wedstrijden.forEach(
+        wedstrijd => {
 
 
-        if (!thuis || !uit) {
-            return;
+            if (
+                !wedstrijd.gespeeld
+            ) {
+
+                return;
+
+            }
+
+
+            const thuis =
+                stand[
+                    wedstrijd.thuis
+                ];
+
+
+            const uit =
+                stand[
+                    wedstrijd.uit
+                ];
+
+
+            if (
+                !thuis ||
+                !uit
+            ) {
+
+                return;
+
+            }
+
+
+            thuis.gespeeld++;
+            uit.gespeeld++;
+
+
+            thuis.voor +=
+                wedstrijd.thuisGoals;
+
+            thuis.tegen +=
+                wedstrijd.uitGoals;
+
+
+            uit.voor +=
+                wedstrijd.uitGoals;
+
+            uit.tegen +=
+                wedstrijd.thuisGoals;
+
+
+            if (
+                wedstrijd.thuisGoals >
+                wedstrijd.uitGoals
+            ) {
+
+                thuis.gewonnen++;
+
+                thuis.punten += 3;
+
+                uit.verloren++;
+
+            } else if (
+                wedstrijd.thuisGoals <
+                wedstrijd.uitGoals
+            ) {
+
+                uit.gewonnen++;
+
+                uit.punten += 3;
+
+                thuis.verloren++;
+
+            } else {
+
+                thuis.gelijk++;
+
+                uit.gelijk++;
+
+                thuis.punten++;
+
+                uit.punten++;
+
+            }
+
         }
-
-
-        thuis.gespeeld++;
-
-        uit.gespeeld++;
-
-
-        thuis.voor +=
-            wedstrijd.thuisGoals;
-
-        thuis.tegen +=
-            wedstrijd.uitGoals;
-
-
-        uit.voor +=
-            wedstrijd.uitGoals;
-
-        uit.tegen +=
-            wedstrijd.thuisGoals;
-
-
-        if (
-            wedstrijd.thuisGoals >
-            wedstrijd.uitGoals
-        ) {
-
-            thuis.gewonnen++;
-
-            thuis.punten += 3;
-
-            uit.verloren++;
-
-        } else if (
-            wedstrijd.thuisGoals <
-            wedstrijd.uitGoals
-        ) {
-
-            uit.gewonnen++;
-
-            uit.punten += 3;
-
-            thuis.verloren++;
-
-        } else {
-
-            thuis.gelijk++;
-
-            uit.gelijk++;
-
-            thuis.punten++;
-
-            uit.punten++;
-        }
-
-    });
+    );
 
 
     const standArray =
-        Object.values(stand);
+        Object.values(
+            stand
+        );
 
 
-    standArray.forEach(team => {
+    standArray.forEach(
+        team => {
 
-        team.doelsaldo =
-            team.voor -
-            team.tegen;
+            team.doelsaldo =
+                team.voor -
+                team.tegen;
 
-    });
+        }
+    );
 
 
     standArray.sort(
@@ -1343,6 +1828,7 @@ function berekenStand() {
                     b.punten -
                     a.punten
                 );
+
             }
 
 
@@ -1355,6 +1841,7 @@ function berekenStand() {
                     b.doelsaldo -
                     a.doelsaldo
                 );
+
             }
 
 
@@ -1367,6 +1854,7 @@ function berekenStand() {
                     b.voor -
                     a.voor
                 );
+
             }
 
 
@@ -1384,8 +1872,8 @@ function berekenStand() {
         standArray,
         container
     );
-}
 
+}
 
 
 function toonStand(
@@ -1404,23 +1892,14 @@ function toonStand(
                     <tr>
 
                         <th>#</th>
-
                         <th>Team</th>
-
                         <th>G</th>
-
                         <th>W</th>
-
                         <th>GL</th>
-
                         <th>V</th>
-
                         <th>DV</th>
-
                         <th>DT</th>
-
                         <th>DS</th>
-
                         <th>P</th>
 
                     </tr>
@@ -1436,15 +1915,17 @@ function toonStand(
     stand.forEach(
         (team, index) => {
 
+
             html += `
 
-                <tr class="
-                    ${
-                        team.team === "Risdam Seedan"
+                <tr
+                    class="${
+                        team.team ===
+                        "Risdam Seedan"
                             ? "risdam-rij"
                             : ""
-                    }
-                ">
+                    }"
+                >
 
                     <td>
                         ${index + 1}
@@ -1522,9 +2003,10 @@ function toonStand(
     `;
 
 
-    container.innerHTML = html;
-}
+    container.innerHTML =
+        html;
 
+}
 
 
 /* ==========================================
@@ -1538,6 +2020,7 @@ function toonSpelers() {
             "spelers-lijst"
         );
 
+
     if (!container) {
         return;
     }
@@ -1545,104 +2028,129 @@ function toonSpelers() {
 
     container.innerHTML =
         spelers
-            .map(speler => {
 
-                const initialen =
-                    speler.naam
-                        .split(/[\s-]+/)
-                        .map(
-                            deel =>
-                                deel.charAt(0)
-                        )
-                        .join("")
-                        .substring(0, 2)
-                        .toUpperCase();
+            .map(
+                speler => {
 
 
-                const afbeelding =
-                    speler.foto
-                        ? `
-                            <img
-                                src="${speler.foto}"
-                                alt="${speler.naam}"
-                            >
-                        `
-                        : `
-                            <div class="speler-placeholder">
-                                ${initialen}
-                            </div>
-                        `;
+                    const initialen =
+                        speler.naam
+
+                            .split(
+                                /[\s-]+/
+                            )
+
+                            .map(
+                                deel =>
+                                    deel.charAt(0)
+                            )
+
+                            .join("")
+
+                            .substring(
+                                0,
+                                2
+                            )
+
+                            .toUpperCase();
 
 
-                return `
+                    const afbeelding =
+                        speler.foto
 
-                    <article class="speler-kaart">
+                            ? `
 
-                        <div class="speler-foto">
+                                <img
+                                    src="${speler.foto}"
+                                    alt="${speler.naam}"
+                                >
 
-                            ${afbeelding}
+                            `
 
-                        </div>
+                            : `
 
+                                <div class="speler-placeholder">
 
-                        <div class="speler-info">
-
-                            <h3 class="speler-naam">
-                                ${speler.naam}
-                            </h3>
-
-
-                            <div class="speler-stats">
-
-                                <div class="speler-stat">
-
-                                    <strong>
-
-                                        ${
-                                            speler.doelpunten === null
-                                                ? "–"
-                                                : speler.doelpunten
-                                        }
-
-                                    </strong>
-
-                                    <span>
-                                        Doelpunten
-                                    </span>
+                                    ${initialen}
 
                                 </div>
 
+                            `;
 
-                                <div class="speler-stat">
 
-                                    <strong>
+                    return `
 
-                                        ${
-                                            speler.assists === null
-                                                ? "–"
-                                                : speler.assists
-                                        }
+                        <article class="speler-kaart">
 
-                                    </strong>
+                            <div class="speler-foto">
 
-                                    <span>
-                                        Assists
-                                    </span>
+                                ${afbeelding}
+
+                            </div>
+
+
+                            <div class="speler-info">
+
+                                <h3 class="speler-naam">
+
+                                    ${speler.naam}
+
+                                </h3>
+
+
+                                <div class="speler-stats">
+
+                                    <div class="speler-stat">
+
+                                        <strong>
+
+                                            ${
+                                                speler.doelpunten === null
+                                                    ? "–"
+                                                    : speler.doelpunten
+                                            }
+
+                                        </strong>
+
+                                        <span>
+                                            Doelpunten
+                                        </span>
+
+                                    </div>
+
+
+                                    <div class="speler-stat">
+
+                                        <strong>
+
+                                            ${
+                                                speler.assists === null
+                                                    ? "–"
+                                                    : speler.assists
+                                            }
+
+                                        </strong>
+
+                                        <span>
+                                            Assists
+                                        </span>
+
+                                    </div>
 
                                 </div>
 
                             </div>
 
-                        </div>
+                        </article>
 
-                    </article>
+                    `;
 
-                `;
+                }
+            )
 
-            })
             .join("");
-}
 
+}
 
 
 /* ==========================================
@@ -1669,15 +2177,19 @@ function toonTopscorers() {
     ) {
 
         return;
+
     }
 
 
     const topscorers =
         spelers
+
             .filter(
                 speler =>
-                    speler.doelpunten !== null
+                    speler.doelpunten !==
+                    null
             )
+
             .sort(
                 (a, b) =>
                     b.doelpunten -
@@ -1687,10 +2199,13 @@ function toonTopscorers() {
 
     const assistLijst =
         spelers
+
             .filter(
                 speler =>
-                    speler.assists !== null
+                    speler.assists !==
+                    null
             )
+
             .sort(
                 (a, b) =>
                     b.assists -
@@ -1709,6 +2224,7 @@ function toonTopscorers() {
 
         doelpuntenContainer.innerHTML =
             topscorers
+
                 .map(
                     (speler, index) => `
 
@@ -1730,7 +2246,9 @@ function toonTopscorers() {
 
                     `
                 )
+
                 .join("");
+
     }
 
 
@@ -1745,6 +2263,7 @@ function toonTopscorers() {
 
         assistsContainer.innerHTML =
             assistLijst
+
                 .map(
                     (speler, index) => `
 
@@ -1766,10 +2285,12 @@ function toonTopscorers() {
 
                     `
                 )
-                .join("");
-    }
-}
 
+                .join("");
+
+    }
+
+}
 
 
 /* ==========================================
@@ -1791,6 +2312,7 @@ function toonSponsors() {
 
     container.innerHTML =
         sponsors
+
             .map(
                 sponsor => `
 
@@ -1810,14 +2332,16 @@ function toonSponsors() {
                         <div class="sponsor-info">
 
                             <h3 class="sponsor-naam">
+
                                 ${sponsor.naam}
+
                             </h3>
 
 
                             <a
                                 href="${sponsor.website}"
                                 target="_blank"
-                                rel="noopener noreferrer"
+                                rel="sponsored noopener noreferrer"
                                 class="sponsor-link"
                             >
 
@@ -1831,18 +2355,23 @@ function toonSponsors() {
 
                 `
             )
-            .join("");
-}
 
+            .join("");
+
+}
 
 
 /* ==========================================
    WEBSITE STARTEN
 ========================================== */
 
+toonCompetitieNaam();
+
 toonVolgendeWedstrijd();
 
 toonNieuws();
+
+toonHomeSponsors();
 
 toonUitslagen();
 
