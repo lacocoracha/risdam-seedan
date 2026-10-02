@@ -49,9 +49,9 @@ jobs:
           python -m pip install -r automation/requirements.txt
 
 
-      - name: HZS controleren en data bijwerken
+      - name: HZS veilig controleren en bijwerken
         run: |
-          python automation/import_hzs.py --write
+          python automation/safe_update.py
 
 
       - name: Controleren of er iets veranderd is
@@ -69,7 +69,7 @@ jobs:
           fi
 
 
-          echo "Nieuwe wedstrijddata gevonden."
+          echo "Nieuwe veilige wedstrijddata gevonden."
 
 
           git config \
@@ -87,7 +87,7 @@ jobs:
 
 
           git commit \
-            -m "Automatische update wedstrijddata"
+            -m "Automatische veilige update wedstrijddata"
 
 
           git push
