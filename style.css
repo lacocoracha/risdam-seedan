@@ -1318,6 +1318,190 @@ section p {
 }
 
 
+
+
+/* ==========================================
+   UITKLAPBARE RISDAM-UITSLAGEN
+========================================== */
+
+.wedstrijd-uitklapbaar {
+    padding: 18px;
+}
+
+
+.wedstrijd-samenvatting {
+    position: relative;
+
+    display: block;
+
+    padding-right: 34px;
+
+    cursor: pointer;
+
+    list-style: none;
+
+    outline: none;
+}
+
+
+.wedstrijd-samenvatting::-webkit-details-marker {
+    display: none;
+}
+
+
+.wedstrijd-samenvatting::marker {
+    display: none;
+
+    content: "";
+}
+
+
+.wedstrijd-samenvatting:focus-visible {
+    border-radius: 7px;
+
+    box-shadow:
+        0 0 0 3px rgba(244, 196, 48, 0.38);
+}
+
+
+.wedstrijd-uitklap-icoon {
+    position: absolute;
+
+    top: 50%;
+    right: 0;
+
+    color: var(--navy);
+
+    font-size: 19px;
+
+    font-weight: 800;
+
+    line-height: 1;
+
+    transform:
+        translateY(-50%);
+
+    transition:
+        transform 0.2s ease,
+        color 0.2s ease;
+}
+
+
+.wedstrijd-uitklapbaar[open]
+.wedstrijd-uitklap-icoon {
+    color: #ad8200;
+
+    transform:
+        translateY(-50%)
+        rotate(180deg);
+}
+
+
+.wedstrijd-details {
+    margin-top: 16px;
+
+    padding-top: 16px;
+
+    border-top:
+        1px solid #e4e6ec;
+}
+
+
+.wedstrijd-details-titel {
+    margin-bottom: 10px;
+
+    color: var(--navy);
+
+    font-family: "Cinzel", serif;
+
+    font-size: 15px;
+
+    font-weight: 700;
+}
+
+
+.wedstrijd-goals-lijst {
+    display: grid;
+
+    gap: 8px;
+
+    margin: 0;
+
+    padding: 0;
+
+    list-style: none;
+}
+
+
+.wedstrijd-goal {
+    display: grid;
+
+    grid-template-columns:
+        28px minmax(0, 1fr) auto;
+
+    gap: 9px;
+
+    align-items: center;
+
+    padding: 9px 11px;
+
+    background-color: white;
+
+    border-radius: 8px;
+
+    border:
+        1px solid #e7e9ef;
+}
+
+
+.wedstrijd-goal-nummer {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    width: 25px;
+    height: 25px;
+
+    border-radius: 50%;
+
+    background-color: var(--navy);
+
+    color: var(--yellow);
+
+    font-size: 11px;
+
+    font-weight: 800;
+}
+
+
+.wedstrijd-goal-speler {
+    color: var(--navy);
+
+    font-weight: 800;
+}
+
+
+.wedstrijd-goal-assist {
+    color: var(--muted);
+
+    font-size: 12px;
+
+    font-weight: 600;
+}
+
+
+.wedstrijd-details-leeg {
+    color: var(--muted);
+
+    font-size: 13px;
+
+    font-style: italic;
+
+    text-align: center;
+}
+
 /* ==========================================
    ALLE UITSLAGEN
 ========================================== */
@@ -2243,6 +2427,38 @@ footer {
 
 }
 
+
+
+
+@media (max-width: 700px) {
+
+    .wedstrijd-samenvatting {
+        padding-right: 24px;
+    }
+
+
+    .wedstrijd-uitklap-icoon {
+        right: -2px;
+
+        font-size: 17px;
+    }
+
+
+    .wedstrijd-goal {
+        grid-template-columns:
+            25px minmax(0, 1fr);
+
+        gap: 7px 9px;
+    }
+
+
+    .wedstrijd-goal-assist {
+        grid-column: 2;
+
+        font-size: 11px;
+    }
+
+}
 
 /* ==========================================
    MINDER ANIMATIES INDIEN INGESTELD
