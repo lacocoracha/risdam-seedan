@@ -2,6 +2,30 @@
   "schemaVersion": 1,
   "wedstrijden": [
     {
+      "id": "2026-08-31-team-11-20-the-goal-diggers",
+      "datum": "2026-08-31",
+      "tijd": "19:30",
+      "locatie": "De Kers",
+      "locatieLink": "https://maps.google.com?q=Sporthal De Kers, Moerbalk 1, Hoorn, 1628 GW",
+      "thuis": "Team 11.20",
+      "uit": "The Goal Diggers",
+      "thuisGoals": null,
+      "uitGoals": null,
+      "gespeeld": false
+    },
+    {
+      "id": "2026-08-31-hvb-griffel-united",
+      "datum": "2026-08-31",
+      "tijd": "20:30",
+      "locatie": "De Opgang",
+      "locatieLink": "https://maps.google.com?q=Sportcentrum Opgang, Vredehofstraat 5, Hoorn, 1624 XG",
+      "thuis": "HVB",
+      "uit": "Griffel United",
+      "thuisGoals": null,
+      "uitGoals": null,
+      "gespeeld": false
+    },
+    {
       "id": "2026-08-31-family-first-risdam-seedan",
       "datum": "2026-08-31",
       "thuis": "Family First",
@@ -17,6 +41,15 @@
       "uit": "Underdogs",
       "thuisGoals": 1,
       "uitGoals": 2,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-08-31-smile-security-old-stars",
+      "datum": "2026-08-31",
+      "thuis": "Smile security",
+      "uit": "Old stars",
+      "thuisGoals": 10,
+      "uitGoals": 3,
       "gespeeld": true
     },
     {
@@ -38,22 +71,12 @@
       "gespeeld": true
     },
     {
-      "id": "2026-08-31-smile-security-old-stars",
-      "datum": "2026-08-31",
-      "thuis": "Smile security",
-      "uit": "Old stars",
-      "thuisGoals": 10,
-      "uitGoals": 3,
-      "gespeeld": true
-    },
-
-    {
-      "id": "2026-09-07-griffel-united-underdogs",
+      "id": "2026-09-07-family-first-the-goal-diggers",
       "datum": "2026-09-07",
-      "thuis": "Griffel United",
-      "uit": "Underdogs",
-      "thuisGoals": 2,
-      "uitGoals": 8,
+      "thuis": "Family First",
+      "uit": "The Goal Diggers",
+      "thuisGoals": 1,
+      "uitGoals": 5,
       "gespeeld": true
     },
     {
@@ -66,21 +89,21 @@
       "gespeeld": true
     },
     {
-      "id": "2026-09-07-family-first-the-goal-diggers",
+      "id": "2026-09-07-griffel-united-underdogs",
       "datum": "2026-09-07",
-      "thuis": "Family First",
-      "uit": "The Goal Diggers",
-      "thuisGoals": 1,
-      "uitGoals": 5,
+      "thuis": "Griffel United",
+      "uit": "Underdogs",
+      "thuisGoals": 2,
+      "uitGoals": 8,
       "gespeeld": true
     },
     {
-      "id": "2026-09-07-vn-united-fc-goodfellas",
+      "id": "2026-09-07-hvb-old-stars",
       "datum": "2026-09-07",
-      "thuis": "VN United",
-      "uit": "FC Goodfellas",
-      "thuisGoals": 14,
-      "uitGoals": 3,
+      "thuis": "HVB",
+      "uit": "Old stars",
+      "thuisGoals": 4,
+      "uitGoals": 0,
       "gespeeld": true
     },
     {
@@ -102,22 +125,12 @@
       "gespeeld": true
     },
     {
-      "id": "2026-09-07-hvb-old-stars",
+      "id": "2026-09-07-vn-united-fc-goodfellas",
       "datum": "2026-09-07",
-      "thuis": "HVB",
-      "uit": "Old stars",
-      "thuisGoals": 4,
-      "uitGoals": 0,
-      "gespeeld": true
-    },
-
-    {
-      "id": "2026-09-14-old-stars-risdam-seedan",
-      "datum": "2026-09-14",
-      "thuis": "Old stars",
-      "uit": "Risdam Seedan",
-      "thuisGoals": 1,
-      "uitGoals": 9,
+      "thuis": "VN United",
+      "uit": "FC Goodfellas",
+      "thuisGoals": 14,
+      "uitGoals": 3,
       "gespeeld": true
     },
     {
@@ -130,20 +143,11 @@
       "gespeeld": true
     },
     {
-      "id": "2026-09-14-hvb-underdogs",
+      "id": "2026-09-14-fruitjuwelier-de-hoef-fc-goodfellas",
       "datum": "2026-09-14",
-      "thuis": "HVB",
-      "uit": "Underdogs",
+      "thuis": "Fruitjuwelier De Hoef",
+      "uit": "FC Goodfellas",
       "thuisGoals": 5,
-      "uitGoals": 2,
-      "gespeeld": true
-    },
-    {
-      "id": "2026-09-14-smile-security-the-goal-diggers",
-      "datum": "2026-09-14",
-      "thuis": "Smile security",
-      "uit": "The Goal Diggers",
-      "thuisGoals": 4,
       "uitGoals": 4,
       "gespeeld": true
     },
@@ -157,6 +161,33 @@
       "gespeeld": true
     },
     {
+      "id": "2026-09-14-hvb-underdogs",
+      "datum": "2026-09-14",
+      "thuis": "HVB",
+      "uit": "Underdogs",
+      "thuisGoals": 5,
+      "uitGoals": 2,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-14-old-stars-risdam-seedan",
+      "datum": "2026-09-14",
+      "thuis": "Old stars",
+      "uit": "Risdam Seedan",
+      "thuisGoals": 1,
+      "uitGoals": 9,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-14-smile-security-the-goal-diggers",
+      "datum": "2026-09-14",
+      "thuis": "Smile security",
+      "uit": "The Goal Diggers",
+      "thuisGoals": 4,
+      "uitGoals": 4,
+      "gespeeld": true
+    },
+    {
       "id": "2026-09-14-vn-united-team-11-20",
       "datum": "2026-09-14",
       "thuis": "VN United",
@@ -166,22 +197,24 @@
       "gespeeld": true
     },
     {
-      "id": "2026-09-14-fruitjuwelier-de-hoef-fc-goodfellas",
-      "datum": "2026-09-14",
-      "thuis": "Fruitjuwelier De Hoef",
-      "uit": "FC Goodfellas",
-      "thuisGoals": 5,
-      "uitGoals": 4,
-      "gespeeld": true
-    },
-
-    {
-      "id": "2026-09-21-griffel-united-fc-goodfellas",
+      "id": "2026-09-21-smile-security-team-1337",
       "datum": "2026-09-21",
-      "thuis": "Griffel United",
-      "uit": "FC Goodfellas",
+      "tijd": "21:00",
+      "locatie": "De Kers",
+      "locatieLink": "https://maps.google.com?q=Sporthal De Kers, Moerbalk 1, Hoorn, 1628 GW",
+      "thuis": "Smile security",
+      "uit": "Team 1337",
+      "thuisGoals": null,
+      "uitGoals": null,
+      "gespeeld": false
+    },
+    {
+      "id": "2026-09-21-family-first-vn-united",
+      "datum": "2026-09-21",
+      "thuis": "Family First",
+      "uit": "VN United",
       "thuisGoals": 3,
-      "uitGoals": 9,
+      "uitGoals": 5,
       "gespeeld": true
     },
     {
@@ -194,21 +227,21 @@
       "gespeeld": true
     },
     {
-      "id": "2026-09-21-underdogs-per-seconde-grijzer",
+      "id": "2026-09-21-griffel-united-fc-goodfellas",
       "datum": "2026-09-21",
-      "thuis": "Underdogs",
-      "uit": "Per seconde grijzer",
-      "thuisGoals": 0,
-      "uitGoals": 1,
+      "thuis": "Griffel United",
+      "uit": "FC Goodfellas",
+      "thuisGoals": 3,
+      "uitGoals": 9,
       "gespeeld": true
     },
     {
-      "id": "2026-09-21-family-first-vn-united",
+      "id": "2026-09-21-hvb-risdam-seedan",
       "datum": "2026-09-21",
-      "thuis": "Family First",
-      "uit": "VN United",
+      "thuis": "HVB",
+      "uit": "Risdam Seedan",
       "thuisGoals": 3,
-      "uitGoals": 5,
+      "uitGoals": 2,
       "gespeeld": true
     },
     {
@@ -221,32 +254,12 @@
       "gespeeld": true
     },
     {
-      "id": "2026-09-21-smile-security-team-1337",
+      "id": "2026-09-21-underdogs-per-seconde-grijzer",
       "datum": "2026-09-21",
-      "tijd": "21:00",
-      "thuis": "Smile security",
-      "uit": "Team 1337",
-      "thuisGoals": null,
-      "uitGoals": null,
-      "gespeeld": false
-    },
-    {
-      "id": "2026-09-21-hvb-risdam-seedan",
-      "datum": "2026-09-21",
-      "thuis": "HVB",
-      "uit": "Risdam Seedan",
-      "thuisGoals": 3,
-      "uitGoals": 2,
-      "gespeeld": true
-    },
-
-    {
-      "id": "2026-09-28-hvb-per-seconde-grijzer",
-      "datum": "2026-09-28",
-      "thuis": "HVB",
+      "thuis": "Underdogs",
       "uit": "Per seconde grijzer",
-      "thuisGoals": 6,
-      "uitGoals": 3,
+      "thuisGoals": 0,
+      "uitGoals": 1,
       "gespeeld": true
     },
     {
@@ -259,12 +272,21 @@
       "gespeeld": true
     },
     {
-      "id": "2026-09-28-risdam-seedan-the-goal-diggers",
+      "id": "2026-09-28-griffel-united-team-11-20",
       "datum": "2026-09-28",
-      "thuis": "Risdam Seedan",
-      "uit": "The Goal Diggers",
-      "thuisGoals": 7,
-      "uitGoals": 5,
+      "thuis": "Griffel United",
+      "uit": "Team 11.20",
+      "thuisGoals": 5,
+      "uitGoals": 9,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-28-hvb-per-seconde-grijzer",
+      "datum": "2026-09-28",
+      "thuis": "HVB",
+      "uit": "Per seconde grijzer",
+      "thuisGoals": 6,
+      "uitGoals": 3,
       "gespeeld": true
     },
     {
@@ -273,6 +295,15 @@
       "thuis": "Old stars",
       "uit": "Team 1337",
       "thuisGoals": 5,
+      "uitGoals": 5,
+      "gespeeld": true
+    },
+    {
+      "id": "2026-09-28-risdam-seedan-the-goal-diggers",
+      "datum": "2026-09-28",
+      "thuis": "Risdam Seedan",
+      "uit": "The Goal Diggers",
+      "thuisGoals": 7,
       "uitGoals": 5,
       "gespeeld": true
     },
@@ -286,15 +317,6 @@
       "gespeeld": true
     },
     {
-      "id": "2026-09-28-griffel-united-team-11-20",
-      "datum": "2026-09-28",
-      "thuis": "Griffel United",
-      "uit": "Team 11.20",
-      "thuisGoals": 5,
-      "uitGoals": 9,
-      "gespeeld": true
-    },
-    {
       "id": "2026-09-28-underdogs-fc-goodfellas",
       "datum": "2026-09-28",
       "thuis": "Underdogs",
@@ -303,7 +325,54 @@
       "uitGoals": 4,
       "gespeeld": true
     },
-
+    {
+      "id": "2026-10-05-old-stars-vn-united",
+      "datum": "2026-10-05",
+      "tijd": "19:00",
+      "locatie": "De Opgang",
+      "locatieLink": "https://maps.google.com?q=Sportcentrum Opgang, Vredehofstraat 5, Hoorn, 1624 XG",
+      "thuis": "Old stars",
+      "uit": "VN United",
+      "thuisGoals": null,
+      "uitGoals": null,
+      "gespeeld": false
+    },
+    {
+      "id": "2026-10-05-underdogs-team-11-20",
+      "datum": "2026-10-05",
+      "tijd": "19:30",
+      "locatie": "De Kers",
+      "locatieLink": "https://maps.google.com?q=Sporthal De Kers, Moerbalk 1, Hoorn, 1628 GW",
+      "thuis": "Underdogs",
+      "uit": "Team 11.20",
+      "thuisGoals": null,
+      "uitGoals": null,
+      "gespeeld": false
+    },
+    {
+      "id": "2026-10-05-hvb-the-goal-diggers",
+      "datum": "2026-10-05",
+      "tijd": "19:45",
+      "locatie": "De Opgang",
+      "locatieLink": "https://maps.google.com?q=Sportcentrum Opgang, Vredehofstraat 5, Hoorn, 1624 XG",
+      "thuis": "HVB",
+      "uit": "The Goal Diggers",
+      "thuisGoals": null,
+      "uitGoals": null,
+      "gespeeld": false
+    },
+    {
+      "id": "2026-10-05-per-seconde-grijzer-fc-goodfellas",
+      "datum": "2026-10-05",
+      "tijd": "20:15",
+      "locatie": "De Kers",
+      "locatieLink": "https://maps.google.com?q=Sporthal De Kers, Moerbalk 1, Hoorn, 1628 GW",
+      "thuis": "Per seconde grijzer",
+      "uit": "FC Goodfellas",
+      "thuisGoals": null,
+      "uitGoals": null,
+      "gespeeld": false
+    },
     {
       "id": "2026-10-05-risdam-seedan-team-1337",
       "datum": "2026-10-05",
@@ -317,6 +386,78 @@
       "gespeeld": false
     },
     {
+      "id": "2026-10-05-smile-security-fruitjuwelier-de-hoef",
+      "datum": "2026-10-05",
+      "tijd": "21:00",
+      "locatie": "De Kers",
+      "locatieLink": "https://maps.google.com?q=Sporthal De Kers, Moerbalk 1, Hoorn, 1628 GW",
+      "thuis": "Smile security",
+      "uit": "Fruitjuwelier De Hoef",
+      "thuisGoals": null,
+      "uitGoals": null,
+      "gespeeld": false
+    },
+    {
+      "id": "2026-10-05-griffel-united-family-first",
+      "datum": "2026-10-05",
+      "tijd": "21:15",
+      "locatie": "De Opgang",
+      "locatieLink": "https://maps.google.com?q=Sportcentrum Opgang, Vredehofstraat 5, Hoorn, 1624 XG",
+      "thuis": "Griffel United",
+      "uit": "Family First",
+      "thuisGoals": null,
+      "uitGoals": null,
+      "gespeeld": false
+    },
+    {
+      "id": "2026-10-19-the-goal-diggers-team-1337",
+      "datum": "2026-10-19",
+      "tijd": "19:00",
+      "locatie": "De Opgang",
+      "locatieLink": "https://maps.google.com?q=Sportcentrum Opgang, Vredehofstraat 5, Hoorn, 1624 XG",
+      "thuis": "The Goal Diggers",
+      "uit": "Team 1337",
+      "thuisGoals": null,
+      "uitGoals": null,
+      "gespeeld": false
+    },
+    {
+      "id": "2026-10-19-griffel-united-smile-security",
+      "datum": "2026-10-19",
+      "tijd": "19:30",
+      "locatie": "De Kers",
+      "locatieLink": "https://maps.google.com?q=Sporthal De Kers, Moerbalk 1, Hoorn, 1628 GW",
+      "thuis": "Griffel United",
+      "uit": "Smile security",
+      "thuisGoals": null,
+      "uitGoals": null,
+      "gespeeld": false
+    },
+    {
+      "id": "2026-10-19-hvb-fc-goodfellas",
+      "datum": "2026-10-19",
+      "tijd": "19:45",
+      "locatie": "De Opgang",
+      "locatieLink": "https://maps.google.com?q=Sportcentrum Opgang, Vredehofstraat 5, Hoorn, 1624 XG",
+      "thuis": "HVB",
+      "uit": "FC Goodfellas",
+      "thuisGoals": null,
+      "uitGoals": null,
+      "gespeeld": false
+    },
+    {
+      "id": "2026-10-19-per-seconde-grijzer-team-11-20",
+      "datum": "2026-10-19",
+      "tijd": "20:15",
+      "locatie": "De Kers",
+      "locatieLink": "https://maps.google.com?q=Sporthal De Kers, Moerbalk 1, Hoorn, 1628 GW",
+      "thuis": "Per seconde grijzer",
+      "uit": "Team 11.20",
+      "thuisGoals": null,
+      "uitGoals": null,
+      "gespeeld": false
+    },
+    {
       "id": "2026-10-19-risdam-seedan-vn-united",
       "datum": "2026-10-19",
       "tijd": "20:30",
@@ -324,6 +465,30 @@
       "locatieLink": "https://www.google.com/maps/search/?api=1&query=Akkerwinde+43%2C+1689+NT+Zwaag",
       "thuis": "Risdam Seedan",
       "uit": "VN United",
+      "thuisGoals": null,
+      "uitGoals": null,
+      "gespeeld": false
+    },
+    {
+      "id": "2026-10-19-old-stars-fruitjuwelier-de-hoef",
+      "datum": "2026-10-19",
+      "tijd": "21:00",
+      "locatie": "De Kers",
+      "locatieLink": "https://maps.google.com?q=Sporthal De Kers, Moerbalk 1, Hoorn, 1628 GW",
+      "thuis": "Old stars",
+      "uit": "Fruitjuwelier De Hoef",
+      "thuisGoals": null,
+      "uitGoals": null,
+      "gespeeld": false
+    },
+    {
+      "id": "2026-10-19-underdogs-family-first",
+      "datum": "2026-10-19",
+      "tijd": "21:15",
+      "locatie": "De Opgang",
+      "locatieLink": "https://maps.google.com?q=Sportcentrum Opgang, Vredehofstraat 5, Hoorn, 1624 XG",
+      "thuis": "Underdogs",
+      "uit": "Family First",
       "thuisGoals": null,
       "uitGoals": null,
       "gespeeld": false
