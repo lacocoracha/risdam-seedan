@@ -13,6 +13,7 @@
 const DATA_PADDEN = {
     site: "data/site.json",
     wedstrijden: "data/wedstrijden.json",
+    wedstrijdstats: "data/wedstrijdstats.json",
     nieuws: "data/nieuws.json",
     spelers: "data/spelers.json",
     sponsors: "data/sponsors.json"
@@ -23,6 +24,7 @@ const state = {
     site: null,
     teams: [],
     wedstrijden: [],
+    wedstrijdstats: [],
     nieuws: [],
     spelers: [],
     sponsors: []
@@ -62,6 +64,7 @@ async function laadData() {
     const [
         site,
         wedstrijden,
+        wedstrijdstats,
         nieuws,
         spelers,
         sponsors
@@ -73,6 +76,10 @@ async function laadData() {
 
         laadJson(
             DATA_PADDEN.wedstrijden
+        ),
+
+        laadJson(
+            DATA_PADDEN.wedstrijdstats
         ),
 
         laadJson(
@@ -100,6 +107,10 @@ async function laadData() {
 
     state.wedstrijden =
         wedstrijden.wedstrijden;
+
+
+    state.wedstrijdstats =
+        wedstrijdstats.wedstrijden;
 
 
     state.nieuws =
@@ -252,6 +263,147 @@ function valideerData() {
         }
     );
 
+
+
+
+    if (
+        !Array.isArray(
+            state.wedstrijdstats
+        )
+    ) {
+
+        throw new Error(
+            "wedstrijdstats.json mist wedstrijden."
+        );
+
+    }
+
+
+    const wedstrijdIds =
+        new Set(
+            state.wedstrijden.map(
+                wedstrijd =>
+                    wedstrijd.id
+            )
+        );
+
+
+    const spelerIds =
+        new Set(
+            state.spelers.map(
+                speler =>
+                    speler.id
+            )
+        );
+
+
+    const statsWedstrijdIds =
+        new Set();
+
+
+    state.wedstrijdstats.forEach(
+        stats => {
+
+
+            if (
+                !stats.wedstrijdId
+            ) {
+
+                throw new Error(
+                    "wedstrijdstats bevat een item zonder wedstrijdId."
+                );
+
+            }
+
+
+            if (
+                statsWedstrijdIds.has(
+                    stats.wedstrijdId
+                )
+            ) {
+
+                throw new Error(
+                    `wedstrijdstats bevat dubbele wedstrijdId: ${stats.wedstrijdId}`
+                );
+
+            }
+
+
+            statsWedstrijdIds.add(
+                stats.wedstrijdId
+            );
+
+
+            if (
+                !wedstrijdIds.has(
+                    stats.wedstrijdId
+                )
+            ) {
+
+                throw new Error(
+                    `wedstrijdstats verwijst naar onbekende wedstrijd: ${stats.wedstrijdId}`
+                );
+
+            }
+
+
+            if (
+                !Array.isArray(
+                    stats.goals
+                )
+            ) {
+
+                throw new Error(
+                    `wedstrijdstats ${stats.wedstrijdId} mist goals.`
+                );
+
+            }
+
+
+            stats.goals.forEach(
+                goal => {
+
+
+                    const eigenDoelpunt =
+                        goal.eigenDoelpunt ===
+                            true;
+
+
+                    if (
+                        !eigenDoelpunt &&
+                        !spelerIds.has(
+                            goal.scorerId
+                        )
+                    ) {
+
+                        throw new Error(
+                            `Onbekende doelpuntenmaker in ${stats.wedstrijdId}: ${goal.scorerId}`
+                        );
+
+                    }
+
+
+                    if (
+                        goal.assistId !==
+                            null &&
+                        goal.assistId !==
+                            undefined &&
+                        !spelerIds.has(
+                            goal.assistId
+                        )
+                    ) {
+
+                        throw new Error(
+                            `Onbekende assistgever in ${stats.wedstrijdId}: ${goal.assistId}`
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
 
     state.nieuws.forEach(
         bericht => {
@@ -547,6 +699,231 @@ function escapeHtml(
 
 }
 
+
+
+
+function wedstrijdStatsVoor(
+    wedstrijdId
+) {
+
+    return (
+        state.wedstrijdstats.find(
+            stats =>
+                stats.wedstrijdId ===
+                    wedstrijdId
+        ) || null
+    );
+
+}
+
+
+function spelerNaamVanId(
+    spelerId
+) {
+
+    const speler =
+        state.spelers.find(
+            item =>
+                item.id ===
+                    spelerId
+        );
+
+
+    return (
+        speler
+            ? speler.naam
+            : "Onbekend"
+    );
+
+}
+
+
+function berekenSpelerTotalen() {
+
+    const totalen =
+        Object.fromEntries(
+
+            state.spelers.map(
+                speler => [
+
+                    speler.id,
+
+                    {
+                        doelpunten: 0,
+                        assists: 0
+                    }
+
+                ]
+            )
+
+        );
+
+
+    state.wedstrijdstats.forEach(
+        stats => {
+
+
+            stats.goals.forEach(
+                goal => {
+
+
+                    if (
+                        goal.eigenDoelpunt !==
+                            true &&
+                        totalen[
+                            goal.scorerId
+                        ]
+                    ) {
+
+                        totalen[
+                            goal.scorerId
+                        ].doelpunten++;
+
+                    }
+
+
+                    if (
+                        goal.assistId &&
+                        totalen[
+                            goal.assistId
+                        ]
+                    ) {
+
+                        totalen[
+                            goal.assistId
+                        ].assists++;
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    return totalen;
+
+}
+
+
+function heeftSpelerStatistieken() {
+
+    return state.wedstrijdstats.some(
+        stats =>
+            Array.isArray(
+                stats.goals
+            ) &&
+            stats.goals.length > 0
+    );
+
+}
+
+
+function maakWedstrijdStatsHtml(
+    wedstrijd
+) {
+
+    const stats =
+        wedstrijdStatsVoor(
+            wedstrijd.id
+        );
+
+
+    if (
+        !stats ||
+        stats.goals.length === 0
+    ) {
+
+        return `
+
+            <div class="wedstrijd-details-leeg">
+                Spelersstatistieken volgen.
+            </div>
+
+        `;
+
+    }
+
+
+    const goalsHtml =
+        stats.goals
+
+            .map(
+                (
+                    goal,
+                    index
+                ) => {
+
+
+                    const scorer =
+                        goal.eigenDoelpunt ===
+                            true
+
+                            ? "Eigen doelpunt tegenstander"
+
+                            : spelerNaamVanId(
+                                goal.scorerId
+                            );
+
+
+                    const assist =
+                        goal.assistId
+
+                            ? `Assist ${spelerNaamVanId(
+                                goal.assistId
+                            )}`
+
+                            : "Geen assist";
+
+
+                    return `
+
+                        <li class="wedstrijd-goal">
+
+                            <span class="wedstrijd-goal-nummer">
+                                ${index + 1}
+                            </span>
+
+                            <span class="wedstrijd-goal-speler">
+                                ${escapeHtml(
+                                    scorer
+                                )}
+                            </span>
+
+                            <span class="wedstrijd-goal-assist">
+                                (${escapeHtml(
+                                    assist
+                                )})
+                            </span>
+
+                        </li>
+
+                    `;
+
+                }
+            )
+
+            .join("");
+
+
+    return `
+
+        <div class="wedstrijd-details-inhoud">
+
+            <div class="wedstrijd-details-titel">
+                Doelpunten
+            </div>
+
+            <ol class="wedstrijd-goals-lijst">
+                ${goalsHtml}
+            </ol>
+
+        </div>
+
+    `;
+
+}
 
 /* ==========================================
    COMPETITIENAAM
@@ -1187,60 +1564,83 @@ function toonUitslagen() {
             .map(
                 wedstrijd => `
 
-                    <div class="wedstrijd">
+                    <details class="wedstrijd wedstrijd-uitklapbaar">
 
 
-                        <div class="wedstrijd-datum">
+                        <summary class="wedstrijd-samenvatting">
 
-                            ${mooieDatum(
-                                wedstrijd.datum
+
+                            <div class="wedstrijd-datum">
+
+                                ${mooieDatum(
+                                    wedstrijd.datum
+                                )}
+
+                            </div>
+
+
+                            <div class="wedstrijd-teams">
+
+
+                                <span
+                                    class="${risdamClass(
+                                        wedstrijd.thuis
+                                    )}"
+                                >
+
+                                    ${escapeHtml(
+                                        wedstrijd.thuis
+                                    )}
+
+                                </span>
+
+
+                                <strong>
+
+                                    ${wedstrijd.thuisGoals}
+                                    -
+                                    ${wedstrijd.uitGoals}
+
+                                </strong>
+
+
+                                <span
+                                    class="${risdamClass(
+                                        wedstrijd.uit
+                                    )}"
+                                >
+
+                                    ${escapeHtml(
+                                        wedstrijd.uit
+                                    )}
+
+                                </span>
+
+
+                            </div>
+
+
+                            <span
+                                class="wedstrijd-uitklap-icoon"
+                                aria-hidden="true"
+                            >
+                                ▾
+                            </span>
+
+
+                        </summary>
+
+
+                        <div class="wedstrijd-details">
+
+                            ${maakWedstrijdStatsHtml(
+                                wedstrijd
                             )}
 
                         </div>
 
 
-                        <div class="wedstrijd-teams">
-
-
-                            <span
-                                class="${risdamClass(
-                                    wedstrijd.thuis
-                                )}"
-                            >
-
-                                ${escapeHtml(
-                                    wedstrijd.thuis
-                                )}
-
-                            </span>
-
-
-                            <strong>
-
-                                ${wedstrijd.thuisGoals}
-                                -
-                                ${wedstrijd.uitGoals}
-
-                            </strong>
-
-
-                            <span
-                                class="${risdamClass(
-                                    wedstrijd.uit
-                                )}"
-                            >
-
-                                ${escapeHtml(
-                                    wedstrijd.uit
-                                )}
-
-                            </span>
-
-
-                        </div>
-
-
-                    </div>
+                    </details>
 
                 `
             )
@@ -2219,6 +2619,14 @@ function toonSpelers() {
     }
 
 
+    const totalen =
+        berekenSpelerTotalen();
+
+
+    const heeftStats =
+        heeftSpelerStatistieken();
+
+
     container.innerHTML =
         state.spelers
 
@@ -2277,6 +2685,12 @@ function toonSpelers() {
                             `;
 
 
+                    const spelerTotalen =
+                        totalen[
+                            speler.id
+                        ];
+
+
                     return `
 
                         <article class="speler-kaart">
@@ -2309,12 +2723,11 @@ function toonSpelers() {
                                         <strong>
 
                                             ${
-                                                speler.doelpunten ===
-                                                    null
+                                                heeftStats
 
-                                                    ? "–"
+                                                    ? spelerTotalen.doelpunten
 
-                                                    : speler.doelpunten
+                                                    : "–"
                                             }
 
                                         </strong>
@@ -2331,12 +2744,11 @@ function toonSpelers() {
                                         <strong>
 
                                             ${
-                                                speler.assists ===
-                                                    null
+                                                heeftStats
 
-                                                    ? "–"
+                                                    ? spelerTotalen.assists
 
-                                                    : speler.assists
+                                                    : "–"
                                             }
 
                                         </strong>
@@ -2394,13 +2806,36 @@ function toonTopscorers() {
     }
 
 
+    const totalen =
+        berekenSpelerTotalen();
+
+
+    const spelersMetTotalen =
+        state.spelers.map(
+            speler => ({
+
+                ...speler,
+
+                doelpunten:
+                    totalen[
+                        speler.id
+                    ].doelpunten,
+
+                assists:
+                    totalen[
+                        speler.id
+                    ].assists
+
+            })
+        );
+
+
     const topscorers =
-        state.spelers
+        spelersMetTotalen
 
             .filter(
                 speler =>
-                    speler.doelpunten !==
-                    null
+                    speler.doelpunten > 0
             )
 
             .sort(
@@ -2411,12 +2846,11 @@ function toonTopscorers() {
 
 
     const assistLijst =
-        state.spelers
+        spelersMetTotalen
 
             .filter(
                 speler =>
-                    speler.assists !==
-                    null
+                    speler.assists > 0
             )
 
             .sort(
