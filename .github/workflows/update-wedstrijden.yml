@@ -1,0 +1,93 @@
+name: HZS wedstrijddata automatisch bijwerken
+
+on:
+  workflow_dispatch:
+
+  schedule:
+    - cron: "17 7,12,18,23 * * *"
+      timezone: "Europe/Amsterdam"
+
+
+permissions:
+  contents: write
+
+
+concurrency:
+  group: hzs-wedstrijd-update
+  cancel-in-progress: false
+
+
+jobs:
+
+  update:
+
+    name: Controleer HZS
+
+    runs-on: ubuntu-latest
+
+
+    steps:
+
+      - name: Repository ophalen
+        uses: actions/checkout@v7
+
+
+      - name: Python installeren
+        uses: actions/setup-python@v7
+
+        with:
+          python-version: "3.14"
+
+          cache: "pip"
+
+          cache-dependency-path: |
+            automation/requirements.txt
+
+
+      - name: Python packages installeren
+        run: |
+          python -m pip install -r automation/requirements.txt
+
+
+      - name: HZS controleren en data bijwerken
+        run: |
+          python automation/import_hzs.py --write
+
+
+      - name: Controleren of er iets veranderd is
+        shell: bash
+
+        run: |
+
+          if git diff --quiet -- data/wedstrijden.json; then
+
+            echo "Geen nieuwe wedstrijddata gevonden."
+            echo "Er wordt niets gecommit."
+
+            exit 0
+
+          fi
+
+
+          echo "Nieuwe wedstrijddata gevonden."
+
+
+          git config \
+            user.name \
+            "github-actions[bot]"
+
+
+          git config \
+            user.email \
+            "41898282+github-actions[bot]@users.noreply.github.com"
+
+
+          git add \
+            data/wedstrijden.json
+
+
+          git commit \
+            -m "Automatische update wedstrijddata"
+
+
+          git push
