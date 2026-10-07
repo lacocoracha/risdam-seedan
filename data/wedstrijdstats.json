@@ -1,4 +1,14 @@
 {
   "schemaVersion": 1,
-  "wedstrijden": []
+  "wedstrijden": [
+    {
+      "wedstrijdId": "2026-10-05-risdam-seedan-team-1337",
+      "goals": [
+        {
+          "scorerId": "allie",
+          "assistId": "nanvey"
+        }
+      ]
+    }
+  ]
 }
